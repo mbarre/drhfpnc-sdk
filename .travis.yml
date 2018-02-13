@@ -5,6 +5,7 @@ cache:
   directories:
   - ".autoconf"
   - "$HOME/.m2"
+install: mvn install checksum:files -DskipTests=true
 deploy:
   provider: releases
   api_key:
