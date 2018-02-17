@@ -33,13 +33,14 @@ public class VacantPostsServiceWrapper {
     final static Logger logger = LoggerFactory.getLogger(VacantPostsServiceWrapper.class);
 
 
-    private static WebClient buildWebClient(){
+    public static WebClient buildWebClient(){
         java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
         java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
 
-        WebClient webClient = new WebClient(BrowserVersion.FIREFOX_52);
+        WebClient webClient = new WebClient(BrowserVersion.BEST_SUPPORTED);
         webClient.getOptions().setJavaScriptEnabled(false);
         webClient.getOptions().setDownloadImages(false);
+        webClient.getOptions().setCssEnabled(false);//if you don't need css
         return webClient;
     }
 

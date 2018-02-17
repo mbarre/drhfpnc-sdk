@@ -28,8 +28,10 @@ public class VacantPostsServiceWrapperTest extends TestCase {
         java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.OFF);
         java.util.logging.Logger.getLogger("org.apache.http").setLevel(java.util.logging.Level.OFF);
 
-        try (final WebClient webClient = new WebClient()) {
-            final HtmlPage htmlPage = webClient.getPage(VacantPostsServiceWrapper.BASE_URL + VacantPostsServiceWrapper.VP_URL);
+        try (final WebClient webClient = VacantPostsServiceWrapper.buildWebClient()) {
+
+            String url = VacantPostsServiceWrapper.BASE_URL + VacantPostsServiceWrapper.VP_URL;
+            final HtmlPage htmlPage = webClient.getPage(url);
             assertTrue(htmlPage.asText().contains(VacantPostsServiceWrapper.COPYRIGHT));
 
             HtmlForm form = htmlPage.getHtmlElementById(VacantPostsServiceWrapper.FORM_ID);
